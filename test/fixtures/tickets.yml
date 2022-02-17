@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seat: one
+  showtime: one
+  customer: one
+  status: 1
+
+two:
+  seat: two
+  showtime: two
+  customer: two
+  status: 1
