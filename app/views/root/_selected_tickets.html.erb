@@ -11,7 +11,7 @@
           <li class="flex">
             <span>Seat <%= ticket.seat_number %> in <%= ticket.theatre_name %></span>
             <span class="flex-1 border-b border-dotted border-black text-right">
-              <%= ticket.price %>
+              <%= ticket.price.format %>
             </span>
           </li>
         <% end %>
@@ -21,19 +21,19 @@
   <div class="flex pt-8 text-lg">
     <span>Subtotal:</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.subtotal %> cents
+      <%= selected_tickets.subtotal.format %>
     </span>
   </div>
   <div class="flex pt-8 text-lg">
-    <span>Taxes (%<%= selected_tickets.tax_percentage %>):</span>
+    <span>Taxes (<%= selected_tickets.tax_percentage %>%):</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.taxes %> cents
+      <%= selected_tickets.taxes.format %>
     </span>
   </div>
   <div class="flex pt-8 text-2xl">
     <span>Total:</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.total %> cents
+      <%= selected_tickets.total.format %> 
     </span>
   </div>
 <% end %>

@@ -18,7 +18,6 @@ class SelectedTicketsPresenter
       end.to_h
   end
 
-  # Really shouldn't be doing this manually - use the `money` gem!
   def subtotal
     @subtotal ||= @selected_tickets.reduce(0) do |sum, ticket|
       sum += ticket.price
