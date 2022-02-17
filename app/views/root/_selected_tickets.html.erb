@@ -1,10 +1,11 @@
+<h1 class="text-2xl"> Purchase Preview </h1>
 <% if tickets.empty? %>
   Please select a ticket!
 <% else %> 
   <% tickets.each do |movie_name, showtimes_to_tickets| %>
-    <h2> <%= movie_name %> </h2>
+    <h2 class="text-xl"> <%= movie_name %> </h2>
     <% showtimes_to_tickets.each do |showtime, tickets| %>
-      <h4> <%= showtime %> </h4>
+      <h4 class="text-lg"> <%= showtime.to_fs(:short) %> </h4>
       <ul>
         <% tickets.each do |ticket| %>
           <li> Seat <%= ticket.seat.number %> in <%= ticket.seat.theatre.name %></li>
