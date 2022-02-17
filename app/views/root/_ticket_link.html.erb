@@ -1,5 +1,5 @@
-<%= link_to("/select-ticket/#{ticket.id}", { method: :post, id: "#{dom_id(ticket)}_link", class: "p-4 rounded-lg shadow-lg flex justify-center bg-violet-600 hover:bg-violet-400" }) do %>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<%= link_to(url_for(action: "select_ticket", id: ticket.id), { data: { "turbo-method" => "post" }, id: "#{dom_id(ticket)}_link", class: "p-4 rounded-lg shadow-lg flex justify-center bg-violet-600 hover:bg-violet-400" }) do %>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-</svg>
+  </svg>
         <% end %>

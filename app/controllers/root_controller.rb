@@ -26,4 +26,26 @@ class RootController < ApplicationController
       format.turbo_stream
     end
   end
+
+  def select_ticket
+    ticket_id = params.require(:id)
+
+    @ticket = Ticket.where(id: params.require(:id)).first!
+    @ticket.update(status: :claimed_pending_payment)
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
+  def deselect_ticket
+    ticket_id = params.require(:id)
+
+    @ticket = Ticket.where(id: params.require(:id)).first!
+    @ticket.update(status: :available)
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 end

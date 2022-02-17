@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "#{dom_id(@ticket)}_link" do %>
+  <%= render "ticket_link", ticket: @ticket %>
+<% end %>
+
+<%= turbo_stream.remove "#{dom_id(@ticket)}_selected_item" %>

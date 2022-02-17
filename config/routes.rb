@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   post "root/showtimes"
   post "root/tickets"
-  post "root/select-ticket"
+  post "root/select_ticket/:id", to: "root#select_ticket"
+  post "root/deselect_ticket/:id", to: "root#deselect_ticket"
 end
