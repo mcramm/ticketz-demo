@@ -8,4 +8,9 @@ class Ticket < ApplicationRecord
     claimed_pending_payment: 1,
     claimed: 2,
   }
+
+  def price
+    # All tickets are $12 for the time being...
+    1200
+  end
 end

@@ -17,12 +17,10 @@
   <div class="flex flex-row">
     <%= turbo_frame_tag("tickets-for-showtime", class: "w-1/3") do %>
     <% end %>
-    <div class="ml-20">
+    <div class="mx-20 w-1/4">
       <%= turbo_frame_tag("selected-tickets") do %>
-        <%= render "selected_tickets", tickets: @selected_tickets %>
+        <%= render "selected_tickets", selected_tickets: @selected_tickets %>
       <% end %>
     </div>
   </div>
-
-
 </div>

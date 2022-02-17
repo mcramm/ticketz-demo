@@ -59,10 +59,6 @@ class RootController < ApplicationController
       .includes(:seat)
       .includes(showtime: [:movie, :theatre])
 
-    tickets_by_movie = tickets.group_by { |ticket| ticket.showtime.movie.name }
-
-    tickets_by_movie.map do |movie_name, tickets|
-      [movie_name, tickets.group_by { |ticket| ticket.showtime.starts_at }]
-    end.to_h
+    SelectedTicketsPresenter.new(tickets)
   end
 end

@@ -1,16 +1,39 @@
 <h1 class="text-2xl"> Purchase Preview </h1>
-<% if tickets.empty? %>
+<% if selected_tickets.empty? %>
   Please select a ticket!
 <% else %> 
-  <% tickets.each do |movie_name, showtimes_to_tickets| %>
+  <% selected_tickets.by_movie.each do |movie_name, tickets_at_showtime| %>
     <h2 class="text-xl"> <%= movie_name %> </h2>
-    <% showtimes_to_tickets.each do |showtime, tickets| %>
-      <h4 class="text-lg"> <%= showtime.to_fs(:short) %> </h4>
+    <% tickets_at_showtime.each do |showtime, tickets| %>
+      <h4 class="text-lg"> <%= showtime %> </h4>
       <ul>
         <% tickets.each do |ticket| %>
-          <li> Seat <%= ticket.seat.number %> in <%= ticket.seat.theatre.name %></li>
+          <li class="flex">
+            <span>Seat <%= ticket.seat_number %> in <%= ticket.theatre_name %></span>
+            <span class="flex-1 border-b border-dotted border-black text-right">
+              <%= ticket.price %>
+            </span>
+          </li>
         <% end %>
       </ul>
     <% end %>
   <% end %>
+  <div class="flex pt-8 text-lg">
+    <span>Subtotal:</span>
+    <span class="flex-1 border-b border-dotted border-black text-right">
+      <%= selected_tickets.subtotal %> cents
+    </span>
+  </div>
+  <div class="flex pt-8 text-lg">
+    <span>Taxes (%<%= selected_tickets.tax_percentage %>):</span>
+    <span class="flex-1 border-b border-dotted border-black text-right">
+      <%= selected_tickets.taxes %> cents
+    </span>
+  </div>
+  <div class="flex pt-8 text-2xl">
+    <span>Total:</span>
+    <span class="flex-1 border-b border-dotted border-black text-right">
+      <%= selected_tickets.total %> cents
+    </span>
+  </div>
 <% end %>
