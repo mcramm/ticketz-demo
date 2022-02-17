@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is me fucking around with Rails 7 / Hotwire.
 
-Things you may want to cover:
+What you see is rough! This is my first attempt at using Turbo, so if you're
+reading this and have any feedback, please feel free to open an issue, a PR, hit
+me up on [Twitter](https://twitter.com/cramm), or email me at mike@mcramm.com 🥳.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![](https://media.giphy.com/media/y2J2hwdC4gS7S/giphy.gif)
