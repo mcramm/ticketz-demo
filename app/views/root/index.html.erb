@@ -12,11 +12,14 @@
     No showtimes to display...
   <% end %>
 
-  <%= turbo_frame_tag("select-tickets") do %>
-  <% end %>
-
-  <ul>
-    <%= turbo_frame_tag("selected-tickets") do %>
+  <div class="flex flex-row">
+    <%= turbo_frame_tag("select-tickets", class: "w-128") do %>
     <% end %>
-  </ul>
+    <ul class="ml-20">
+      <%= turbo_frame_tag("selected-tickets") do %>
+      <% end %>
+    </ul>
+  </div>
+
+
 </div>
