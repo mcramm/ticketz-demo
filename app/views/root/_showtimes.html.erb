@@ -1,0 +1,7 @@
+<% if showtimes.empty? %>
+  No showtimes to display...
+<% else %>
+  <%= form_tag(url_for(action: "tickets"), method: :post) do %>
+    <%= select_tag "showtime_id", options_from_collection_for_select(showtimes, "id", "starts_at"), prompt: "Select a showtime", onchange: "Turbo.navigator.submitForm(this.form)" %>
+  <% end %>
+<% end %>

@@ -1,7 +1,7 @@
 <div>
   <h1 class="font-bold text-4xl">Let's buy some tickets!</h1>
-  <div class="h-32">
-    <%= turbo_frame_tag("select-movie") do %>
+  <div class="h-16 flex items-center">
+    <%= turbo_frame_tag("select-movie", class:"pr-10") do %>
       <div id="select-movie">
         <%= form_tag(url_for(action: "showtimes"), method: :post ) do %>
           <%= select_tag "movie_id", options_from_collection_for_select(@movies, "id", "name"), prompt: "Select a movie", onchange: "Turbo.navigator.submitForm(this.form)"%>
@@ -10,7 +10,7 @@
     <% end %>
 
     <%= turbo_frame_tag("select-showtime") do %>
-      No showtimes to display...
+      <%= render "showtimes", showtimes: [] %>
     <% end %>
 
   </div>

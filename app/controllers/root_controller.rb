@@ -6,7 +6,7 @@ class RootController < ApplicationController
   end
 
   def showtimes
-    movie_id = params.require(:movie_id)
+    movie_id = params[:movie_id]
 
     @showtimes = Showtime.where(movie_id: movie_id)
 

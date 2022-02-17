@@ -1,6 +1,6 @@
 <%= turbo_stream.update "select-showtime" do %>
-  <%= form_tag(url_for(action: "tickets"), method: :post) do %>
-    <%= select_tag "showtime_id", options_from_collection_for_select(@showtimes, "id", "starts_at"), prompt: "Select a showtime", onchange: "Turbo.navigator.submitForm(this.form)" %>
-  <% end %>
+  <%= render "showtimes", showtimes: @showtimes %>
 <% end %>
 
+<%= turbo_stream.update "tickets-for-showtime" do %>
+<% end %>
