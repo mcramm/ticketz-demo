@@ -1,8 +1,13 @@
-<%= turbo_stream.update "select-tickets" do %>
+<%= turbo_stream.update "tickets-for-showtime" do %>
   <div class="grid grid-cols-5 gap-4">
     <% @tickets.each do |ticket| %>
-      <%= render "ticket_link", ticket: ticket %>
+      <% if ticket.available? %>
+        <%= render "select_ticket_link", ticket: ticket %>
+      <% elsif ticket.claimed_pending_payment? %>
+        <%= render "deselect_ticket_link", ticket: ticket %>
+      <% else %>
+        <%= render "unavailable_ticket", ticket: ticket %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
-
