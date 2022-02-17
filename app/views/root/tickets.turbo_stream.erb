@@ -1,0 +1,8 @@
+<%= turbo_stream.update "select-tickets" do %>
+  <div class="grid grid-cols-5 gap-4">
+    <% @tickets.each do |ticket| %>
+      <%= render "ticket_link", ticket: ticket %>
+    <% end %>
+  </div>
+<% end %>
+
