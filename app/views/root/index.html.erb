@@ -1,48 +1,36 @@
 <div>
-  <h1 class="font-bold text-4xl">Let's buy some tickets!</h1>
+  <div class="flex items-center">
+    <h1 class="font-bold text-4xl">Let's buy some tickets!</h1>
+    <%= button_to "(Log out)", sessions_delete_path, method: :delete, class: "text-blue-400 ml-2 hover:text-blue-400 hover:underline" %>
+  </div>
+
   <%= turbo_frame_tag("notices", class: "h-[48px] my-2 w-auto block") -%>
-  <div class="h-16 flex items-center">
-    <%= turbo_frame_tag("select-movie", class:"pr-10") do %>
-      <div id="select-movie">
-        <%= form_tag(url_for(action: "showtimes"), method: :post ) do %>
-          <%= select_tag "movie_id", options_from_collection_for_select(@movies, "id", "name"), prompt: "Select a movie", onchange: "Turbo.navigator.submitForm(this.form)"%>
+
+  <div class="flex flex-row">
+    <div class="flex flex-col">
+      <div class="h-16 flex items-center">
+        <%= turbo_frame_tag("select-movie", class:"pr-10") do %>
+          <div id="select-movie">
+            <%= form_tag(url_for(action: "showtimes"), method: :post ) do %>
+              <%= select_tag "movie_id", options_from_collection_for_select(@movies, "id", "name"), prompt: "Select a movie", onchange: "Turbo.navigator.submitForm(this.form)"%>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= turbo_frame_tag("select-showtime") do %>
+          <%= render "showtimes", showtimes: [] %>
         <% end %>
       </div>
-    <% end %>
 
-    <%= turbo_frame_tag("select-showtime") do %>
-      <%= render "showtimes", showtimes: [] %>
-    <% end %>
+      <div class="flex flex-col">
+        <%= turbo_frame_tag("tickets-for-showtime") -%>
+      </div>
+    </div>
 
-  </div>
-  <div class="flex flex-row">
-    <%= turbo_frame_tag("tickets-for-showtime", class: "w-1/3") -%>
-
-    <div class="mx-20 w-1/4">
+    <div class="ml-20 flex-1">
       <%= turbo_frame_tag("purchase-preview") do %>
         <%= render "purchase_preview", purchase_preview: @purchase_preview %>
       <% end %>
-    </div>
-  </div>
-
-  <div class="mt-5">
-    <p class="text-xl flex-full">Legend</p>
-
-    <div class="flex flex-row justify-around w-1/4">
-      <div class="flex flex-col items-center">
-        <%= render "available_ticket", allow_hover: false %>
-        Available
-      </div>
-
-      <div class="flex flex-col items-center">
-        <%= render "selected_ticket", allow_hover: false %>
-        Claimed (by you)
-      </div>
-
-      <div class="flex flex-col items-center">
-        <%= render "unavailable_ticket", ticket: Ticket.new(id: SecureRandom.uuid) %>
-        Unavailable
-      </div>
     </div>
   </div>
 </div>
