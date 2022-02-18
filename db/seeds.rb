@@ -33,23 +33,29 @@ end
 
 # Create Showtimes for Theatres and Movies
 puts "Creating Showtimes for Theatres and Movies"
-movies.each do |movie|
+movies.each_with_index do |movie, index|
   # Destroy any existing showtimes - we'll recreate them!
   movie.showtimes.destroy_all
 
-  theatres.each do |theatre|
-    4.times do |n|
-      # Lets assume that each movie is 2 hours long
-      offset = (n + 1) * 2
+  first_day = rand(1..3)
+  second_day = rand(4..6)
 
+  first_theatre, second_theatre = theatres.sample(2)
 
-      Showtime.create!(
-        starts_at: offset.hours.from_now,
-        theatre: theatre,
-        movie: movie,
-      )
-    end
-  end
+  # Ensures that we're creating unique start times
+  offset = (index * 2).hours
+
+  Showtime.create!(
+    starts_at: first_day.days.from_now.beginning_of_day + 12.hours + offset,
+    theatre: first_theatre,
+    movie: movie
+  )
+
+  Showtime.create!(
+    starts_at: second_day.days.from_now.beginning_of_day + 17.hours + offset,
+    theatre: second_theatre,
+    movie: movie
+  )
 end
 
 # Create Tickets for all seats we just created
