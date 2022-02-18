@@ -1,0 +1,19 @@
+<div class="mt-10">
+  <p class="text-xl flex-full">Legend</p>
+  <div class="flex flex-row justify-around">
+    <div class="flex flex-col items-center">
+      <%= render "available_ticket", allow_hover: false %>
+      Available
+    </div>
+
+    <div class="flex flex-col items-center">
+      <%= render "selected_ticket", allow_hover: false %>
+      Claimed (by you)
+    </div>
+
+    <div class="flex flex-col items-center">
+      <%= render "unavailable_ticket", ticket: Ticket.new(id: SecureRandom.uuid) %>
+      Unavailable
+    </div>
+  </div>
+</div>

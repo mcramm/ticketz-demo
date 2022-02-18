@@ -14,7 +14,7 @@ class SelectedTicketPresenter
   end
 
   def showtime
-    @selected_ticket.showtime.starts_at.to_fs(:short)
+    @selected_ticket.showtime.starts_at.to_fs(:showtime_full)
   end
 
   def seat_number

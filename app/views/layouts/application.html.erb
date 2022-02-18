@@ -11,10 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% if @current_customer %>
-      <%= button_to "Log out", sessions_delete_path, method: :delete %>
-    <% end %>
+  <body class="bg-white dark:bg-slate-900 text-neutral-900 dark:text-neutral-100">
     <main class="container mx-auto mt-28 px-5">
       <%= yield %>
     </main>

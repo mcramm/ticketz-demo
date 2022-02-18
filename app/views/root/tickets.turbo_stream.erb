@@ -1,5 +1,5 @@
 <%= turbo_stream.update "tickets-for-showtime" do %>
-  <div class="grid grid-cols-5 gap-4">
+  <div class="grid grid-cols-5 gap-4 justify-items-center">
     <% @tickets.each do |ticket| %>
       <% if ticket.available? %>
         <%= render "select_ticket_link", ticket: ticket %>
@@ -10,4 +10,8 @@
       <% end %>
     <% end %>
   </div>
+
+  <img src="https://via.placeholder.com/470x90.png?text=SCREEN" class="mt-5" />
+
+  <%= render "legend" %>
 <% end %>
