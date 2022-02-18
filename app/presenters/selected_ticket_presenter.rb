@@ -26,6 +26,6 @@ class SelectedTicketPresenter
   end
 
   def price
-    @price ||= Money.from_cents(@selected_ticket.price, "CAD")
+    @price ||= Money.from_cents(@selected_ticket.cost, "CAD")
   end
 end

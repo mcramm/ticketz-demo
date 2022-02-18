@@ -7,10 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Creating Movies"
+the_matrix   = Movie.find_or_create_by!(name: "The Matrix")
+ghostbusters = Movie.find_or_create_by!(name: "Ghostbusters")
+spider_man   = Movie.find_or_create_by!(name: "Spider-Man 12")
+
 movies = [
-  Movie.find_or_create_by!(name: "The Matrix"),
-  Movie.find_or_create_by!(name: "Ghostbusters"),
-  Movie.find_or_create_by!(name: "Spider-Man 12"),
+  the_matrix,
+  ghostbusters,
+  spider_man
 ]
 
 puts "Creating Theatres"
@@ -69,4 +73,14 @@ movies.each do |movie|
       )
     end
   end
+end
+
+# Disney takes more of the ticket price, so their tickets cost slightly more
+spider_man.tickets.update_all(price_cents: 500)
+
+# The first row (at the back) will cost more since they're the best seats
+# The last row (at the front) will cost less because they suck!
+theatres.each do |theatre|
+  theatre.seats.where(number: ["1", "2", "3", "4", "5"]).update_all(base_cost_cents: 1200)
+  theatre.seats.where(number: ["26", "27", "28", "29", "30"]).update_all(base_cost_cents: 800)
 end

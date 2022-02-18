@@ -9,8 +9,7 @@ class Ticket < ApplicationRecord
     claimed: 2,
   }
 
-  def price
-    # All tickets are $12 for the time being...
-    1200
+  def cost
+    seat.base_cost_cents + price_cents
   end
 end

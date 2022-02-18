@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_144013) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_18_194805) do
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_144013) do
     t.integer "theatre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "base_cost_cents", default: 1000, null: false
     t.index ["theatre_id"], name: "index_seats_on_theatre_id"
   end
 
@@ -54,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_144013) do
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 200, null: false
     t.index ["customer_id"], name: "index_tickets_on_customer_id"
     t.index ["seat_id"], name: "index_tickets_on_seat_id"
     t.index ["showtime_id"], name: "index_tickets_on_showtime_id"
