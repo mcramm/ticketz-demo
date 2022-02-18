@@ -1,5 +1,7 @@
 <div>
   <h1 class="font-bold text-4xl">Let's buy some tickets!</h1>
+  <%= turbo_frame_tag("notices", class: "h-[48px] my-2 w-auto block") do %>
+  <% end %>
   <div class="h-16 flex items-center">
     <%= turbo_frame_tag("select-movie", class:"pr-10") do %>
       <div id="select-movie">

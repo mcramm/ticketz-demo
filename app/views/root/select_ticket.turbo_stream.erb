@@ -6,3 +6,5 @@
   <%= render "purchase_preview", purchase_preview: @purchase_preview %>
 <% end %>
 
+<%= turbo_stream.update "notices" do %>
+<% end %>

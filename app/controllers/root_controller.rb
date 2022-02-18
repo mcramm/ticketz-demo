@@ -34,6 +34,14 @@ class RootController < ApplicationController
     ticket_id = params.require(:id)
 
     @ticket = Ticket.where(id: params.require(:id)).first!
+
+    if @ticket.claimed_pending_payment? && @ticket.customer != @current_customer
+      respond_to do |format|
+        format.turbo_stream { render template: "select_ticket_conflict" }
+      end
+      return
+    end
+
     @ticket.update(status: :claimed_pending_payment, customer: @current_customer)
 
     @purchase_preview = load_purchase_preview
