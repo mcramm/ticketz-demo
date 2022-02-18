@@ -29,29 +29,17 @@
 
     <div class="flex flex-row justify-around w-1/4">
       <div class="flex flex-col items-center">
-        <div class="p-4 rounded-lg shadow-lg flex w-16 justify-center bg-sky-600">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-          </svg>
-        </div>
+        <%= render "available_ticket", allow_hover: false %>
         Available
       </div>
 
       <div class="flex flex-col items-center">
-        <div class="p-4 rounded-lg shadow-lg flex w-16 justify-center bg-green-600">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-          </svg>
-        </div>
+        <%= render "selected_ticket", allow_hover: false %>
         Claimed (by you)
       </div>
 
       <div class="flex flex-col items-center">
-        <div class="p-4 rounded-lg shadow-lg flex w-16 justify-center bg-stone-800 opacity-50">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-          </svg>
-        </div>
+        <%= render "unavailable_ticket", ticket: Ticket.new(id: SecureRandom.uuid) %>
         Unavailable
       </div>
     </div>
