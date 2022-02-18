@@ -18,5 +18,6 @@ module TicketzDemo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Time::DATE_FORMATS[:showtime_full] = "%a %b %e %Y at %l:%M%p"
   end
 end

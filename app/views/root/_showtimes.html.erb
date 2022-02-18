@@ -1,3 +1,7 @@
 <%= form_tag(url_for(action: "tickets"), method: :post) do %>
-  <%= select_tag "showtime_id", options_for_select(showtimes.map { |showtime| [showtime.starts_at.to_fs(:short), showtime.id]}), prompt: "Select a showtime", onchange: "Turbo.navigator.submitForm(this.form)" %>
+  <%= select_tag("showtime_id",
+                 options_for_select(showtimes.map { |showtime| [showtime.starts_at.to_fs(:showtime_full), showtime.id]}),
+                 prompt: "Select a showtime",
+                 onchange: "Turbo.navigator.submitForm(this.form)",
+                 class: "w-[275px]") %>
 <% end %>
