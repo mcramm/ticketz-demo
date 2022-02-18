@@ -1,7 +1,7 @@
 <%= form_tag(url_for(action: "create"), method: :post) do %>
   <div class="flex flex-col mx-auto w-1/4 items-start">
     <p class="text-xl"> Please enter your name </p>
-    <%= text_field_tag :name, nil, placeholder: "Name", class: "w-full my-2" %>
-    <%= submit_tag "Submit", class: "p-2 text-white self-end rounded-lg shadow-lg bg-green-600 hover:bg-green-400" %>
+    <%= text_field_tag :name, nil, placeholder: "Name", class: "w-full my-2 bg-slate-50 text-neutral-900 dark:bg-slate-700 dark:text-neutral-100" %>
+    <%= submit_tag "Submit", class: "p-2 text-white self-end rounded shadow-lg bg-green-600 hover:bg-green-400" %>
   </div>
 <% end %>
