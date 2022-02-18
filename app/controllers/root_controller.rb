@@ -1,4 +1,6 @@
 class RootController < ApplicationController
+  before_action :set_current_customer
+
   def index
     @movies = Movie.all
     @showtimes = []
@@ -32,7 +34,7 @@ class RootController < ApplicationController
     ticket_id = params.require(:id)
 
     @ticket = Ticket.where(id: params.require(:id)).first!
-    @ticket.update(status: :claimed_pending_payment)
+    @ticket.update(status: :claimed_pending_payment, customer: @current_customer)
 
     @selected_tickets = load_selected_tickets
 
@@ -45,7 +47,7 @@ class RootController < ApplicationController
     ticket_id = params.require(:id)
 
     @ticket = Ticket.where(id: params.require(:id)).first!
-    @ticket.update(status: :available)
+    @ticket.update(status: :available, customer: nil)
 
     @selected_tickets = load_selected_tickets
 
@@ -56,6 +58,7 @@ class RootController < ApplicationController
 
   private def load_selected_tickets
     tickets = Ticket.claimed_pending_payment
+      .where(customer: @current_customer)
       .includes(:seat)
       .includes(showtime: [:movie, :theatre])
 

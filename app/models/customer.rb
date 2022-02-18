@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  has_one :ticket, dependent: :destroy
+  has_many :tickets
 
   validates :name, uniqueness: true
 end

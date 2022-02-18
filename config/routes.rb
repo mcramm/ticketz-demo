@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  post 'sessions/create'
+  delete 'sessions/delete'
+
   root "root#index"
 
   get "root/index"
