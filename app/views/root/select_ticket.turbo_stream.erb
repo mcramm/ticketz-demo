@@ -2,7 +2,7 @@
   <%= render "deselect_ticket_link", ticket: @ticket %>
 <% end %>
 
-<%= turbo_stream.update "selected-tickets" do %>
-  <%= render "selected_tickets", selected_tickets: @selected_tickets %>
+<%= turbo_stream.update "purchase-preview" do %>
+  <%= render "purchase_preview", purchase_preview: @purchase_preview %>
 <% end %>
 

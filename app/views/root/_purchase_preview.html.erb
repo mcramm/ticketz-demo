@@ -1,8 +1,8 @@
 <h1 class="text-2xl"> Purchase Preview </h1>
-<% if selected_tickets.empty? %>
-  Please select a ticket!
+<% if purchase_preview.empty? %>
+  Please select a seat!
 <% else %> 
-  <% selected_tickets.by_movie.each do |movie_name, tickets_at_showtime| %>
+  <% purchase_preview.tickets_by_movie.each do |movie_name, tickets_at_showtime| %>
     <h2 class="text-xl"> <%= movie_name %> </h2>
     <% tickets_at_showtime.each do |showtime, tickets| %>
       <h4 class="text-lg"> <%= showtime %> </h4>
@@ -21,19 +21,19 @@
   <div class="flex pt-8 text-lg">
     <span>Subtotal:</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.subtotal.format %>
+      <%= purchase_preview.subtotal.format %>
     </span>
   </div>
   <div class="flex pt-8 text-lg">
-    <span>Taxes (<%= selected_tickets.tax_percentage %>%):</span>
+    <span>Taxes (<%= purchase_preview.tax_percentage %>%):</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.taxes.format %>
+      <%= purchase_preview.taxes.format %>
     </span>
   </div>
   <div class="flex pt-8 text-2xl">
     <span>Total:</span>
     <span class="flex-1 border-b border-dotted border-black text-right">
-      <%= selected_tickets.total.format %> 
+      <%= purchase_preview.total.format %> 
     </span>
   </div>
 <% end %>

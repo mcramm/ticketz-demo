@@ -1,4 +1,4 @@
-class SelectedTicketsPresenter
+class PurchasePreviewPresenter
   def initialize(selected_tickets)
     @selected_tickets = selected_tickets.map do |selected_ticket|
       SelectedTicketPresenter.new(selected_ticket)
@@ -9,7 +9,7 @@ class SelectedTicketsPresenter
     @selected_tickets.empty?
   end
 
-  def by_movie
+  def tickets_by_movie
     # Yuck!
     @by_movie ||= @selected_tickets.group_by(&:movie_name)
       .map do |movie_name, tickets|

@@ -4,7 +4,7 @@ class RootController < ApplicationController
   def index
     @movies = Movie.all
     @showtimes = []
-    @selected_tickets = load_selected_tickets
+    @purchase_preview = load_purchase_preview
   end
 
   def showtimes
@@ -36,7 +36,7 @@ class RootController < ApplicationController
     @ticket = Ticket.where(id: params.require(:id)).first!
     @ticket.update(status: :claimed_pending_payment, customer: @current_customer)
 
-    @selected_tickets = load_selected_tickets
+    @purchase_preview = load_purchase_preview
 
     respond_to do |format|
       format.turbo_stream
@@ -49,19 +49,19 @@ class RootController < ApplicationController
     @ticket = Ticket.where(id: params.require(:id)).first!
     @ticket.update(status: :available, customer: nil)
 
-    @selected_tickets = load_selected_tickets
+    @purchase_preview = load_purchase_preview
 
     respond_to do |format|
       format.turbo_stream
     end
   end
 
-  private def load_selected_tickets
+  private def load_purchase_preview
     tickets = Ticket.claimed_pending_payment
       .where(customer: @current_customer)
       .includes(:seat)
       .includes(showtime: [:movie, :theatre])
 
-    SelectedTicketsPresenter.new(tickets)
+    PurchasePreviewPresenter.new(tickets)
   end
 end

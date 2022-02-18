@@ -18,8 +18,8 @@
     <%= turbo_frame_tag("tickets-for-showtime", class: "w-1/3") do %>
     <% end %>
     <div class="mx-20 w-1/4">
-      <%= turbo_frame_tag("selected-tickets") do %>
-        <%= render "selected_tickets", selected_tickets: @selected_tickets %>
+      <%= turbo_frame_tag("purchase-preview") do %>
+        <%= render "purchase_preview", purchase_preview: @purchase_preview %>
       <% end %>
     </div>
   </div>
