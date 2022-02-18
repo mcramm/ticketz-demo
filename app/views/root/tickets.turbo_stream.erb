@@ -3,7 +3,7 @@
     <% @tickets.each do |ticket| %>
       <% if ticket.available? %>
         <%= render "select_ticket_link", ticket: ticket %>
-      <% elsif ticket.claimed_pending_payment? %>
+      <% elsif ticket.claimed_pending_payment? && ticket.customer == @current_customer %>
         <%= render "deselect_ticket_link", ticket: ticket %>
       <% else %>
         <%= render "unavailable_ticket", ticket: ticket %>
