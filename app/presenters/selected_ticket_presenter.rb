@@ -5,6 +5,10 @@ class SelectedTicketPresenter
     @selected_ticket = selected_ticket
   end
 
+  def id
+    @selected_ticket.id
+  end
+
   def movie_name
     @selected_ticket.showtime.movie.name
   end
