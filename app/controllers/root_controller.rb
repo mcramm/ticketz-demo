@@ -1,6 +1,9 @@
 class RootController < ApplicationController
   before_action :set_current_customer
 
+  # Note to reader: This is likely way, way to much for a single controller.
+  # A lot of these actions should be split off into their own controllers.
+  # For 2 day project though, this is fine.
   def index
     @movies = Movie.all
     @showtimes = []
